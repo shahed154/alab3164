@@ -211,7 +211,7 @@ function validatePassword(password, username, inputElement)
 
 }
 
-// 5 
+// 5 //i  didnt really undferstand this i just copied a youtube video
 function storeUserData(username, email, password) {
     const users = getUsersFromStorage();
     
@@ -273,7 +273,7 @@ function checkLogin(event) {
         return false;
     }
     
-    
+    //
     loginForm.reset();
     
     let successMessage;
@@ -296,7 +296,8 @@ function checkLogin(event) {
 
 function displayError(message, inputElement) {
     errorDisplay.textContent = message;
-    errorDisplay.style.display = 'block';
+    errorDisplay.style.display = 'block'
+
     errorDisplay.style.backgroundColor = '#fcc';
     errorDisplay.style.color = 'red';
     
@@ -307,7 +308,8 @@ function displayError(message, inputElement) {
 
 function displaySuccess(message) {
     errorDisplay.textContent = message;
-    errorDisplay.style.display = 'block';
+    errorDisplay.style.display = 'block'
+
     errorDisplay.style.backgroundColor = '#cfc';
     errorDisplay.style.color = 'green';
 }
