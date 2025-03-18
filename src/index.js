@@ -31,7 +31,7 @@ function checkRegistration(event)
  {
     event.preventDefault()
     
-    // Get form field values
+
     const username = registerUsername.value
     const emailValue = email.value
     const passwordValue = password.value
