@@ -89,38 +89,38 @@ function checkRegistration(event)
 // The username must contain at least two unique characters.
 // The username cannot contain any special characters or whitespace.
 
-function validateUsername(username, inputElement) 
+function validateUsername(username, inputField) 
 
 {
     if (!username) {
-        displayError('The username cannot be blank.', inputElement);
+        displayError('The username cannot be blank.', inputField);
         return false;
     }
  
     if (username.length < 4)
          {
-        displayError(' The username must be at least four characters long.', inputElement);
+        displayError(' The username must be at least four characters long.', inputField);
     
         return false;
     }
     
  
 
-    const uniqueChars = new Set(username.split('')).size;
-    if (uniqueChars < 2) {
-        displayError('The username must contain at least two unique characters.', inputElement);
+    const uniqueCharacters = new Set(username.split('')).size;
+    if (uniqueCharacters < 2) {
+        displayError('The username must contain at least two unique characters.', inputField);
         return false;
     }
 
     
     if (!/^[a-z-0-9]+$/.test(username)) {
-        displayError('The username cannot contain any special characters or whitespace.', inputElement);
+        displayError('The username cannot contain any special characters or whitespace.', inputField);
         return false;
     }
   
     if (isUsernameTaken(username)) 
         {
-        displayError('That username is already taken.', inputElement);
+        displayError('That username is already taken.', inputField);
         return false;
     }
 
@@ -132,20 +132,20 @@ function validateUsername(username, inputElement)
 // The email must be a valid email address.
 // The email must not be from the domain "example.com."
 
-function validateEmail(email, inputElement) {
+function validateEmail(email, inputField) {
 //https://uibakery.io/regex-library/email  i just took regex from this website idk if this allowed but i gaveup
 
     const emailRegex = /^\S+@\S+\.\S+$/;
     if (!emailRegex.test(email)) {
 
-        displayError('The email must be a valid email address.', inputElement);
+        displayError('The email must be a valid email address.', inputField);
         return false;
     }
     
 
     
     if (email.toLowerCase().endsWith('@example.com')) {
-        displayError('The email must not be from the domain "example.com."', inputElement);
+        displayError('The email must not be from the domain "example.com."', inputField);
         
         return false;
     }
@@ -162,12 +162,12 @@ function validateEmail(email, inputElement) {
 // Passwords cannot contain the username.
 // Both passwords must match.
 //
-function validatePassword(password, username, inputElement) 
+function validatePassword(password, username, inputField) 
 
 {
   
     if (password.length < 12) {
-        displayError(' Passwords must be at least 12 characters long.', inputElement)
+        displayError(' Passwords must be at least 12 characters long.', inputField)
         return false;
     }
 
@@ -175,7 +175,7 @@ function validatePassword(password, username, inputElement)
 
     if (!/[A-Z]/.test(password) || !/[a-z]/.test(password)) 
         {
-        displayError('Passwords must have at least one uppercase and one lowercase letter.', inputElement);
+        displayError('Passwords must have at least one uppercase and one lowercase letter.', inputField);
       
         return false;
     }
@@ -183,25 +183,25 @@ function validatePassword(password, username, inputElement)
 
     if (!/\d/.test(password))
          {
-        displayError('Passwords must contain at least one number.', inputElement);
+        displayError('Passwords must contain at least one number.', inputField);
         return false;
     }
     
     // https://stackoverflow.com/questions/32311081/check-for-special-characters-in-string i just used this
     if (! /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(password)) {
        
-        displayError(' Passwords must contain at least one special character.', inputElement);
+        displayError(' Passwords must contain at least one special character.', inputField);
         return false;
     }
     
     if (password.toLowerCase().includes('password')) {
-        displayError('Passwords cannot contain the word "password".', inputElement);
+        displayError('Passwords cannot contain the word "password".', inputField);
         return false;
     }
     
-    if (username && password.toLowerCase().includes(username.toLowerCase())) {
+    if ( password.toLowerCase().includes(username.toLowerCase())) {
        
-        displayError('Passwords cannot contain the username.', inputElement);
+        displayError('Passwords cannot contain the username.', inputField);
         return false;
     }
     
@@ -294,15 +294,15 @@ function checkLogin(event) {
 // error/sucess displays
 
 
-function displayError(message, inputElement) {
+function displayError(message, inputField) {
     errorDisplay.textContent = message;
     errorDisplay.style.display = 'block'
 
     errorDisplay.style.backgroundColor = '#fcc';
     errorDisplay.style.color = 'red';
     
-    if (inputElement) {
-        inputElement.focus();
+    if (inputField) {
+        inputField.focus();
     }
 }
 
