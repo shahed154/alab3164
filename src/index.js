@@ -1,3 +1,4 @@
+
 // registration 
 const registrationForm = document.getElementById("registration")
 
@@ -112,7 +113,7 @@ function validateUsername(username, inputElement)
     }
 
     
-    if (!/^[a-zA-Z0-9]+$/.test(username)) {
+    if (!/^[a-z-0-9]+$/.test(username)) {
         displayError('The username cannot contain any special characters or whitespace.', inputElement);
         return false;
     }
@@ -136,6 +137,7 @@ function validateEmail(email, inputElement) {
 
     const emailRegex = /^\S+@\S+\.\S+$/;
     if (!emailRegex.test(email)) {
+
         displayError('The email must be a valid email address.', inputElement);
         return false;
     }
@@ -165,13 +167,14 @@ function validatePassword(password, username, inputElement)
 {
   
     if (password.length < 12) {
-        displayError('Passwords must be at least 12 characters long.', inputElement)
+        displayError(' Passwords must be at least 12 characters long.', inputElement)
         return false;
     }
 
 
 
-    if (!/[A-Z]/.test(password) || !/[a-z]/.test(password)) {
+    if (!/[A-Z]/.test(password) || !/[a-z]/.test(password)) 
+        {
         displayError('Passwords must have at least one uppercase and one lowercase letter.', inputElement);
       
         return false;
